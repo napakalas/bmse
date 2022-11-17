@@ -1,4 +1,4 @@
-version: "2.0"
+version: "3.0"
 services:
   app:
     restart: always
@@ -6,7 +6,7 @@ services:
     ports:
       - "8000:8000"
     volumes:
-      - /usr/src/app/casbert_searcher/casbertSearcher/resources/sedmlImages
+      - common_data:/usr/src/app/casbert/casbert/resources/sedmlImages
     env_file: .env
     command: bash -c "cd /usr/src && APP_SETTING=.env python -m app.server"
   
@@ -15,18 +15,22 @@ services:
     build: ./nginx/
     ports:
       - "80:80"
+      - "443:443"
     volumes:
-      - /www/images
+      - /www/
     volumes_from:
       - app
     depends_on:
       - frontend
       - app
-    # links:
-    #   - app:app
 
   frontend:
     restart: always
     build: ./frontend/
     depends_on:
       - app
+  
+      
+volumes:
+  common_data:
+

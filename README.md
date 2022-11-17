@@ -25,11 +25,11 @@ BMSE is built using the following technologies:
   - Now you can access bmse via web browser with
     [http://localhost/](http://localhost/)
     
-:bulb: Check the Makefile file for commands such as stop services, view container logs, etc.
+:bulb: Check the Makefile for commands such as stop services, view container logs, etc.
 
 ## How to deploy?
 We deploy BMSE on a cloud service by [NECTAR](https://dashboard.rc.nectar.org.au/). Services run on an Ubuntu 18.04 LTS (Bionic) amd64 instance with 4 VCPUs and 8GB RAM. We utilise 'docker context' for deployment, which provides flexibility in selecting deployment targets. Here are the steps:
-- Install Docker on the target deployment instant (please adjust it for other than Ubuntu 18.04 LTS (Bionic)):
+- install Docker on the target deployment instant (please adjust it for other than Ubuntu 18.04 LTS (Bionic)):
     - Connect to the target deployment instant:
       ```
       ssh ubuntu@TARGET-PUBLIC-IP
@@ -43,21 +43,11 @@ We deploy BMSE on a cloud service by [NECTAR](https://dashboard.rc.nectar.org.au
       ```
       logout
       ```
-- Create docker context (in this case the contex is named to remote_bmse)
+- build/start BMSE on the remote server
   ```
-  docker context create --docker host=ssh://ubuntu@TARGET-PUBLIC-IP remote_bmse
+  make start-remote ip=TARGET-PUBLIC-IP
   ```
-- Use remote_bmse
-  ```
-  docker context use remote_bmse
-  ```
-- Build the containers in the target deployment instant:
-  ```
-  docker compose --context remote_bmse build
-  ```
-- Run the containers in the VM:
-  ```
-  docker compose --context remote_bmse up -d
-  ```
-- Now you can access bmse via web browser with your instance public IP
+- now you can access bmse via web browser with your instance public IP
   http://TARGET-PUBLIC-IP/
+- if you want to implement SSL on the remote server, follow [this link](https://mindsers.blog/post/https-using-nginx-certbot-docker/).
+  

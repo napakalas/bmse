@@ -1,3 +1,3 @@
-FROM tutum/nginx
-RUN rm /etc/nginx/sites-enabled/default
-ADD sites-enabled/ /etc/nginx/sites-enabled
+FROM nginx:1.23.2
+
+#ADD nginx/ /etc/nginx/conf.d

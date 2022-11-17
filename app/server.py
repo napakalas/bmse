@@ -85,4 +85,10 @@ if __name__ == "__main__":
         if k.startswith(SANIC_PREFIX):
             _, config_key = k.split(SANIC_PREFIX, 1)
             app.config[config_key] = v
-    app.run(host="0.0.0.0", port=8000, debug=False, workers=4)
+    app.run(
+        host="0.0.0.0",
+        port=8000,
+        workers=1,
+        auto_reload=True,
+        access_log=False,
+    )

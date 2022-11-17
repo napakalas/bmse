@@ -1,23 +1,26 @@
 start:
-	docker-compose up -d
+	docker compose up -d
 
 start-build:
-	docker-compose up -d --build
+	docker compose up -d --build
 
 start-build-recreate:
-	docker-compose up -d --build --force-recreate
+	docker compose up -d --build --force-recreate
 
 stop:
-	docker-compose down
+	docker compose down
 
-log-backend:
-	docker logs -f casbert-ir_app_1
+log-app:
+	docker compose logs -f app
 
 log-proxy:
-	docker logs -f casbert-ir_nginx_1
+	docker compose logs -f nginx
 
 log-frontend:
-	docker logs -f casbert-ir_frontend_1
-
-restart-backend:
-	docker-compose restart app
+	docker compose logs -f frontend
+	
+start-remote:
+	docker context create --docker host=ssh://ubuntu@$(ip) remote_bmse	\
+	docker context use remote_bmse	\
+	docker compose --context remote_bmse build	\
+	docker compose --context remote_bmse up -d
