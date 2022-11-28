@@ -1,13 +1,14 @@
 # Biosimulation Model Search Engine (BMSE)
 BMSE is a web-based search engine for finding information in biosimulation models created using CellML and stored in the [Physiome Repository Model (PMR)](https://models.physiomeproject.org). Types of information include variables, mathematical equations, constants, components, models, images, and simulation results.
 
-BMSE is a web-based search engine for finding information in biosimulation models created using CellML and stored in the [Physiome Repository Model (PMR)](https://models.physiomeproject.org). Types of information include variables, mathematical equations, constants, components, models, images, and simulation results.
-
 BMSE is built using the following technologies:
 - [Composite Annotation Search using BERT (CASBERT)](https://github.com/napakalas/casbert)
 - [Sanic](https://sanic.dev/en/)
 - [Nginx](https://www.nginx.com/)
 - [Vue 2](https://vuejs.org/)
+
+## Deployed Search Engine
+BMSE: [http://search.bm-se.cloud.edu.au/](http://search.bm-se.cloud.edu.au/)
 
 ## How to run?
   - git clone the project
@@ -47,7 +48,13 @@ We deploy BMSE on a cloud service by [NECTAR](https://dashboard.rc.nectar.org.au
   ```
   make start-remote ip=TARGET-PUBLIC-IP
   ```
-- now you can access bmse via web browser with your instance public IP
+- now you can access BMSE via web browser with your instance public IP
   http://TARGET-PUBLIC-IP/
 - if you want to implement SSL on the remote server, follow [this link](https://mindsers.blog/post/https-using-nginx-certbot-docker/).
   
+## Related repositories
+[CASBERT](https://github.com/napakalas/casbert.git)
+
+[CASBERT experiment](https://github.com/napakalas/casbert-experiment.git)
+
+[CASBERT index development](https://github.com/napakalas/casbert-indexer.git)
