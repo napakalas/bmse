@@ -6,7 +6,7 @@ services:
     ports:
       - "8000:8000"
     volumes:
-      - common_data:/usr/src/app/casbert/casbert/resources/sedmlImages
+      - common_data:/usr/local/lib/python3.8/site-packages/casbert/resources/sedmlImages
     env_file: .env
     command: bash -c "cd /usr/src && APP_SETTING=.env python -m app.server"
   
