@@ -16,49 +16,49 @@ app = Sanic(name='Biosimulation_Model_IR')
 searcher = Searcher()
 
 
-@app.route("/searchPlots")
+@app.route("/api/searchPlots")
 async def searchPlots(request):
     rs = searcher.searchPlots(request.args['query'][0], 100, 0.1)
     return json(rs)
 
 
-@app.route("/search")
+@app.route("/api/search")
 async def search(request):
     rs = searcher.searchVariables(request.args['query'][0], 100, 0.1)
     return json(rs)
 
 
-@app.route("/dependencyMath")
+@app.route("/api/dependencyMath")
 async def dependencyMath(request):
     rs = searcher.getEntityDependencyMaths(request.args['varId'][0])
     return json(rs)
 
 
-@app.route("/searchCellmls")
+@app.route("/api/searchCellmls")
 async def searchCellmls(request):
     rs = searcher.searchCellmls(request.args['query'][0], 100, 0.1)
     return json(rs)
 
 
-@app.route("/searchSedmls")
+@app.route("/api/searchSedmls")
 async def searchSedmls(request):
     rs = searcher.searchSedmls(request.args['query'][0], 100, 0.1)
     return json(rs)
 
 
-@app.route("/searchImages")
+@app.route("/api/searchImages")
 async def searchImages(request):
     rs = searcher.searchImages(request.args['query'][0], 200, 0.1)
     return json(rs)
 
 
-@app.route("/searchComponents")
+@app.route("/api/searchComponents")
 async def searchComponents(request):
     rs = searcher.searchComponents(request.args['query'][0], 100, 0.1)
     return json(rs)
 
 
-@app.route("/getMaths")
+@app.route("/api/getMaths")
 async def getMaths(request):
     if 'varId' in request.args:
         rs = searcher.getEntityMaths(varIds=request.args['varId'][0])
@@ -67,7 +67,7 @@ async def getMaths(request):
     return json(rs)
 
 
-@app.route("/getComponentCode")
+@app.route("/api/getComponentCode")
 async def getComponentCode(request):
     if 'varId' in request.args:
         rs = searcher.getComponentCode(varId=request.args['varId'][0])
@@ -76,7 +76,7 @@ async def getComponentCode(request):
     return json(rs)
 
 
-@app.route("/teaching")
+@app.route("/api/teaching")
 async def teaching(request):
     return json({'a': 100})
 
